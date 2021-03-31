@@ -68,8 +68,8 @@ for i in range(w):
         som = [0, 0, 0]
         for k in range(i - floor(mlen / 2), i + ceil(mlen / 2)):
             for l in range(j - floor(mlen / 2), j + ceil(mlen / 2)):
-                actualPx = px[k % w, l % h]
-                actualM = m.GetValeur(k - i + floor(mlen / 2),l - j + floor(mlen / 2))
+                actualPx = px[max(min(k, w-1), 0), max(min(l, h-1), 0)]
+                actualM = m.GetValeur(k - i + floor(mlen / 2), l - j + floor(mlen / 2))
 
                 for c in range(3):
                     som[c] = som[c] + round(actualPx[c] * actualM)
