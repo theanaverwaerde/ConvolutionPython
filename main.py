@@ -1,6 +1,6 @@
 from PIL import Image
 from math import *
-import array
+from masque import *
 
 im = Image.open("cat.png").convert('RGB')
 
@@ -28,19 +28,11 @@ while (True):
         continue
 
     if id == 1:
-        m = [[1.5]]
+        m = Brighten()
     elif id == 2:
-        m = [[.5]]
-    elif id == 3:
-        m = [[-1, 0, 1],
-             [-1, 0, 1],
-             [-1, 0, 1]]
-    elif id == 4:
-        m = [[1, 1, 1],
-             [0, 0, 0],
-             [-1, -1, -1]]
-    elif id == 5:
-        print("Entre un nombre impaire pour la taille souhaitez")
+        m = Darken()
+    elif id >= 3 and id <= 5:
+        print("Entre un nombre impaire pour la taille souhaiter")
 
         try:
             size = int(input())
@@ -55,10 +47,13 @@ while (True):
         if size % 2 == 0:
             print("Il faut un nombre impair")
             continue
-
-        m = [[1/pow(size, 2)]*size]*size
-
-
+            
+        if id == 3:
+            m = EdgeVertical(size)
+        elif id == 4:
+            m = EdgeHorizontal(size)
+        elif id == 5:
+            m = Blur(size)
 
     else:
         print("Nombre non valide")
@@ -66,7 +61,7 @@ while (True):
 
     break
 
-mlen = len(m[0])
+mlen = m.GetTaille()
 
 for i in range(w):
     for j in range(h):
@@ -74,7 +69,7 @@ for i in range(w):
         for k in range(i - floor(mlen / 2), i + ceil(mlen / 2)):
             for l in range(j - floor(mlen / 2), j + ceil(mlen / 2)):
                 actualPx = px[k % w, l % h]
-                actualM = m[k - i + floor(mlen / 2)][l - j + floor(mlen / 2)]
+                actualM = m.GetValeur(k - i + floor(mlen / 2),l - j + floor(mlen / 2))
 
                 for c in range(3):
                     som[c] = som[c] + round(actualPx[c] * actualM)
