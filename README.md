@@ -10,8 +10,14 @@ Architecture POO
 ## Utiliser le programme
 Lancer le fichier main.py avec Pillow d'installer sur votre python
 
+Installer Pillow :
 ```python
 python –m pip install Pillow
+```
+
+Lancer le programme :
+```python
+python main.py
 ```
 
 Choisisez votre masque :
