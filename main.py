@@ -80,3 +80,6 @@ result.save("python.png")
 
 im.show()
 result.show()
+
+print()
+print("Merci d'avoir fait confiance à Théo pour votre image de chat")
