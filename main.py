@@ -14,12 +14,12 @@ resultpx = result.load()
 while (True):
     try:
 
-        print("Choisis ta matrix : ")
+        print("Choisis ton masque : ")
         print("1. Brighten")
         print("2. Darken")
         print("3. Edge detector Vertical")
         print("4. Edge detector Horizontal")
-        print("5. Blur ?x?")
+        print("5. Blur")
 
         id = int(input())
 
